@@ -11,13 +11,13 @@ import importlib
 import inspect
 from pathlib import Path
 import sys
-# from modelUtil import dequantize_tensor, decompress_tensor
+from modelUtil import dequantize_tensor, decompress_tensor
 import pickle
-# from DataLoaders.loaderUtil import getDataloader
-# from utils import create_message, create_message_results, create_result_dict
-# from modelUtil import get_criterion
-# from DBService import db_service
-# from Scheduler import Scheduler
+from DataLoaders.loaderUtil import getDataloader
+from utils import create_message, create_message_results, create_result_dict
+from modelUtil import get_criterion
+from DBService import db_service
+from Scheduler import Scheduler
 import time
 
 
@@ -35,8 +35,8 @@ class JobServer:
 
     def load_dataset(self, folder):
 
-        data_test = np.load('data/' + str(folder) + '/X.npy')
-        labels = np.load('data/' + str(folder) + '/y.npy')
+        data_test = np.load('data/' + str(folder) + '/X_test.npy')
+        labels = np.load('data/' + str(folder) + '/y_test.npy')
         return data_test, labels
 
     def testing(self, model, preprocessing, bs, criterion):
